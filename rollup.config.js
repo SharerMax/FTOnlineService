@@ -8,6 +8,9 @@ export default {
   output: {
     dir: 'output',
     format: 'es',
+    sourcemap: true,
+    chunkFileNames: 'chunks/[name].mjs',
+    entryFileNames: '[name].mjs',
   },
   plugins: [resolve(), json(), commonjs()],
 }

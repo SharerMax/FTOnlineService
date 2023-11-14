@@ -1,6 +1,7 @@
 import resolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 import json from '@rollup/plugin-json'
+import del from 'rollup-plugin-delete'
 
 /** @type {import('rollup').RollupOptions} */
 export default {
@@ -12,5 +13,7 @@ export default {
     chunkFileNames: 'chunks/[name].mjs',
     entryFileNames: '[name].mjs',
   },
-  plugins: [resolve(), json(), commonjs()],
+  plugins: [del({
+    targets: 'output/*',
+  }), resolve(), json(), commonjs()],
 }

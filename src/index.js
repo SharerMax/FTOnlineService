@@ -8,6 +8,7 @@ import TTLCache from '@isaacs/ttlcache'
 
 const logger = Debug('ft-online-service')
 const listenPort = process.env.PORT || 3000
+const host = process.env.HOST || '0.0.0.0'
 const app = new Koa()
 const router = new Router()
 const proxyCache = new TTLCache({ max: 100, ttl: 10 * 60 * 1000 })
@@ -44,4 +45,4 @@ app.use(cors({
 app.use(router.routes())
 app.use(router.allowedMethods())
 
-app.listen(listenPort)
+app.listen(listenPort, host)
